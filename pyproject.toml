@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "playlist-to-mp3"
+version = "1.0.0"
+description = "유튜브 플레이리스트를 태그·앨범아트가 담긴 MP3로 저장하는 크로스 OS GUI 앱"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+  "yt-dlp>=2024.1.0",
+  "PySide6>=6.6",
+  "mutagen>=1.47",
+  # macOS 네이티브 타이틀바 통합용(없어도 일반 창으로 동작)
+  "pyobjc-core>=10.0; sys_platform == 'darwin'",
+  "pyobjc-framework-Cocoa>=10.0; sys_platform == 'darwin'",
+]
+
+[project.scripts]
+playlist-to-mp3 = "playlist_to_mp3.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["playlist_to_mp3"]
+
+# 폰트(.ttf)를 휠에 포함
+[tool.hatch.build.targets.wheel.force-include]
+"playlist_to_mp3/fonts" = "playlist_to_mp3/fonts"
