@@ -1,7 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 from PyInstaller.utils.hooks import collect_all
 
-datas = []
+datas = [('vendor/fonts', 'fonts')]
 binaries = [('vendor/ffmpeg', '.'), ('vendor/ffprobe', '.')]
 hiddenimports = []
 tmp_ret = collect_all('yt_dlp')
